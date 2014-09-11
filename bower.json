@@ -1,0 +1,17 @@
+{
+  "name": "angular-workshop-notepad",
+  "version": "0.0.0",
+  "homepage": "https://github.com/neoziro/angular-workshop-notepad",
+  "authors": [
+    "Greg Bergé <neoziro@gmail.com>"
+  ],
+  "description": "Notepad application for an angular workshop.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
