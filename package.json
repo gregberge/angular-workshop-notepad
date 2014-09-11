@@ -1,6 +1,7 @@
 {
   "name": "angular-workshop-notepad",
   "version": "0.0.0",
+  "private": true,
   "description": "Notepad application for an angular workshop.",
   "repository": {
     "type": "git",
