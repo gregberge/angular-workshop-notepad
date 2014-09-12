@@ -9,32 +9,34 @@ window.notepad = {
 
 // Create main module.
 window.notepad.app = angular.module('notepad', [
-  'ngRoute',
+  'ui.router',
   'notepad.constants',
   'notepad.services',
   'notepad.controllers',
   'notepad.filters',
   'notepad.directives'
 ])
-.config(function ($locationProvider, $routeProvider) {
+.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
   $locationProvider.html5Mode(true);
 
-  $routeProvider
-  .when('/notes', {
+  $stateProvider
+  .state('notes', {
+    url: '/notes',
     template: 'All notes.'
   })
-  .when('/notes/:id', {
+  .state('notesDetail', {
+    url: '/notes/:id',
     template: 'Note id #{{noteId}}',
-    controller: function ($routeParams, $scope) {
-      $scope.noteId = $routeParams.id;
+    controller: function ($stateParams, $scope) {
+      $scope.noteId = $stateParams.id;
     }
   })
-  .when('/about', {
+  .state('about', {
+    url: '/about',
     template: 'Notepad application for Workshop.'
-  })
-  .otherwise({
-    redirectTo: '/notes'
   });
+
+  $urlRouterProvider.otherwise('/notes');
 })
 .run(function ($location) {
   if($location.path() === '/error') {
