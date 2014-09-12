@@ -14,4 +14,7 @@ window.notepad.app = angular.module('notepad', [
   'notepad.controllers',
   'notepad.filters',
   'notepad.directives'
-]);
+])
+.config(function ($locationProvider) {
+  $locationProvider.html5Mode(true);
+});
