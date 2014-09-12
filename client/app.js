@@ -9,6 +9,7 @@ window.notepad = {
 
 // Create main module.
 window.notepad.app = angular.module('notepad', [
+  'ngRoute',
   'notepad.constants',
   'notepad.services',
   'notepad.controllers',
