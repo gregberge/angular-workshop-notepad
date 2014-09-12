@@ -16,19 +16,36 @@ window.notepad.app = angular.module('notepad', [
   'notepad.filters',
   'notepad.directives'
 ])
+.value('notes', [
+  {
+    id: 1,
+    title: 'My note',
+    content: 'Content of my note'
+  },
+  {
+    id: 2,
+    title: 'My second note',
+    content: 'Content of my second note'
+  }
+])
 .config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
   .state('notes', {
     url: '/notes',
-    template: 'All notes.'
+    templateUrl: '/views/routes/notes.html',
+    controller: function ($scope, notes) {
+      $scope.notes = notes;
+    }
   })
-  .state('notesDetail', {
-    url: '/notes/:id',
-    template: 'Note id #{{noteId}}',
-    controller: function ($stateParams, $scope) {
-      $scope.noteId = $stateParams.id;
+  .state('notes.detail', {
+    url: '/:id',
+    templateUrl: '/views/routes/notes/detail.html',
+    controller: function ($stateParams, $scope, notes) {
+      $scope.note = notes.filter(function (note) {
+        return note.id + '' === $stateParams.id + '';
+      })[0];
     }
   })
   .state('about', {

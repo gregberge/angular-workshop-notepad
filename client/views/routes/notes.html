@@ -1,0 +1,10 @@
+<div class="notes col-xs-4">
+  <h3>Notes</h3>
+  <ul class="list-group">
+    <li class="list-group-item note" ng-repeat="note in notes">
+      <a ui-sref="notes.detail({id: note.id})">{{note.title}}</a>
+    </li>
+  </ul>
+</div>
+
+<div class="selected-note col-xs-8" ui-view></div>
