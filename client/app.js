@@ -16,8 +16,25 @@ window.notepad.app = angular.module('notepad', [
   'notepad.filters',
   'notepad.directives'
 ])
-.config(function ($locationProvider) {
+.config(function ($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true);
+
+  $routeProvider
+  .when('/notes', {
+    template: 'All notes.'
+  })
+  .when('/notes/:id', {
+    template: 'Note id #{{noteId}}',
+    controller: function ($routeParams, $scope) {
+      $scope.noteId = $routeParams.id;
+    }
+  })
+  .when('/about', {
+    template: 'Notepad application for Workshop.'
+  })
+  .otherwise({
+    redirectTo: '/notes'
+  });
 })
 .run(function ($location) {
   if($location.path() === '/error') {
