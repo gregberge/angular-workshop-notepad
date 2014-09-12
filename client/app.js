@@ -17,4 +17,11 @@ window.notepad.app = angular.module('notepad', [
 ])
 .config(function ($locationProvider) {
   $locationProvider.html5Mode(true);
+})
+.run(function ($location) {
+  if($location.path() === '/error') {
+    $location
+    .path('/')
+    .replace();
+  }
 });
