@@ -30,11 +30,7 @@ window.notepad.app = angular.module('notepad', [
     url: '/:id',
     templateUrl: '/views/routes/notes/detail.html',
     controller: function ($stateParams, $scope, Note) {
-      Note.query().$promise.then(function (notes) {
-        $scope.note = notes.filter(function (note) {
-          return note.id + '' === $stateParams.id + '';
-        })[0];
-      });
+      $scope.note = Note.get({id: $stateParams.id});
     }
   })
   .state('about', {
