@@ -3,10 +3,13 @@ module.exports = function (config) {
     plugins: [
       'karma-mocha',
       'karma-chrome-launcher',
-      'karma-firefox-launcher'
+      'karma-ng-html2js-preprocessor'
     ],
     frameworks: ['mocha'],
     browsers: ['Chrome'],
+    preprocessors: {
+      'client/views/**/*.html': ['ng-html2js']
+    },
     files: [
       {pattern: 'bower_components/jquery/dist/jquery.js', watched: false},
       {pattern: 'bower_components/bootstrap/dist/js/bootstrap.js', watched: false},
@@ -18,7 +21,12 @@ module.exports = function (config) {
 
       'client/app.js',
       'client/app/**/*.js',
+      'client/views/**/*.html',
       'test/client/**/*.js'
-    ]
+    ],
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'client/',
+      prependPrefix: '/'
+    }
   });
 };
