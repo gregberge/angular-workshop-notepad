@@ -29,9 +29,7 @@ window.notepad.app = angular.module('notepad', [
   .state('notes.detail', {
     url: '/:id',
     templateUrl: '/views/routes/notes/detail.html',
-    controller: function ($stateParams, $scope, Note) {
-      $scope.note = Note.get({id: $stateParams.id});
-    }
+    controller: 'NotesDetailCtrl'
   })
   .state('about', {
     url: '/about',
