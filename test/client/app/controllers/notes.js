@@ -29,7 +29,7 @@ describe('NotesCtrl', function() {
     createController();
     $httpBackend.flush();
 
-    expect(scope.notes).to.length(2);
-    expect(scope.notes[0]).to.have.property('title', 'My note');
+    expect(scope.notes).to.length(1);
+    expect(scope.notes[0]).to.have.property('title', 'note');
   });
 });

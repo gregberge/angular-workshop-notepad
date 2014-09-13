@@ -17,32 +17,8 @@ window.notepad.app = angular.module('notepad', [
   'notepad.filters',
   'notepad.directives'
 ])
-.value('notes', [
-  {
-    id: 1,
-    title: 'My note',
-    content: 'Content of my note'
-  },
-  {
-    id: 2,
-    title: 'My second note',
-    content: 'Content of my second note'
-  }
-])
-.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
+.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
   $locationProvider.html5Mode(true);
-
-  $httpProvider.interceptors.push(function (notes) {
-    return {
-      response: function(response) {
-        // Replace data by mocked notes.
-        if (response.config.url === '/api/notes')
-          response.data = notes;
-
-        return response;
-      }
-    };
-  });
 
   $stateProvider
   .state('notes', {
