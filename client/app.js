@@ -28,8 +28,20 @@ window.notepad.app = angular.module('notepad', [
     content: 'Content of my second note'
   }
 ])
-.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
   $locationProvider.html5Mode(true);
+
+  $httpProvider.interceptors.push(function (notes) {
+    return {
+      response: function(response) {
+        // Replace data by mocked notes.
+        if (response.config.url === '/api/notes')
+          response.data = notes;
+
+        return response;
+      }
+    };
+  });
 
   $stateProvider
   .state('notes', {
