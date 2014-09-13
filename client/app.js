@@ -47,11 +47,7 @@ window.notepad.app = angular.module('notepad', [
   .state('notes', {
     url: '/notes',
     templateUrl: '/views/routes/notes.html',
-    controller: function ($scope, $http) {
-      $http.get('/api/notes', {cache: true}).then(function (res) {
-        $scope.notes = res.data;
-      });
-    }
+    controller: 'NotesCtrl'
   })
   .state('notes.detail', {
     url: '/:id',
