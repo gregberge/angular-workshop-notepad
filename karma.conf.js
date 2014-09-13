@@ -19,6 +19,8 @@ module.exports = function (config) {
 
       {pattern: 'bower_components/angular-mocks/angular-mocks.js', watched: false},
       {pattern: 'node_modules/chai/chai.js', watched: false},
+      {pattern: 'node_modules/sinon/pkg/sinon.js', watched: false},
+      {pattern: 'node_modules/sinon-chai/lib/sinon-chai.js', watched: false},
 
       'client/app.js',
       'client/app/**/*.js',
