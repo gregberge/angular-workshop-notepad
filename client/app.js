@@ -35,17 +35,21 @@ window.notepad.app = angular.module('notepad', [
   .state('notes', {
     url: '/notes',
     templateUrl: '/views/routes/notes.html',
-    controller: function ($scope, notes) {
-      $scope.notes = notes;
+    controller: function ($scope, $http) {
+      $http.get('/api/notes').then(function (res) {
+        $scope.notes = res.data;
+      });
     }
   })
   .state('notes.detail', {
     url: '/:id',
     templateUrl: '/views/routes/notes/detail.html',
-    controller: function ($stateParams, $scope, notes) {
-      $scope.note = notes.filter(function (note) {
-        return note.id + '' === $stateParams.id + '';
-      })[0];
+    controller: function ($stateParams, $scope, $http) {
+      $http.get('/api/notes').then(function (res) {
+        $scope.note = res.data.filter(function (note) {
+          return note.id + '' === $stateParams.id + '';
+        })[0];
+      });
     }
   })
   .state('about', {
