@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/neoziro/angular-workshop-notepad.git"
   },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start --single-run"
+  },
   "author": "Greg Bergé <berge.greg@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/neoziro/angular-workshop-notepad",
