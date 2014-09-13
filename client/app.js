@@ -36,7 +36,7 @@ window.notepad.app = angular.module('notepad', [
     url: '/notes',
     templateUrl: '/views/routes/notes.html',
     controller: function ($scope, $http) {
-      $http.get('/api/notes').then(function (res) {
+      $http.get('/api/notes', {cache: true}).then(function (res) {
         $scope.notes = res.data;
       });
     }
@@ -45,7 +45,7 @@ window.notepad.app = angular.module('notepad', [
     url: '/:id',
     templateUrl: '/views/routes/notes/detail.html',
     controller: function ($stateParams, $scope, $http) {
-      $http.get('/api/notes').then(function (res) {
+      $http.get('/api/notes', {cache: true}).then(function (res) {
         $scope.note = res.data.filter(function (note) {
           return note.id + '' === $stateParams.id + '';
         })[0];
