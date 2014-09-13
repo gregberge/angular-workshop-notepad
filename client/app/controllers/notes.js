@@ -13,4 +13,16 @@ window.notepad.controllers.controller('NotesCtrl', function ($scope, Note, $stat
 
   $scope.notes = Note.query();
   $scope.reset();
+
+  $scope.$on('noteDeleted', function (event, id) {
+    var note = $scope.notes.filter(function (note) {
+      return note.id === id;
+    })[0];
+    if (!note) return;
+
+    var index = $scope.notes.indexOf(note);
+    if (index === -1) return;
+
+    $scope.notes.splice(index, 1);
+  });
 });
