@@ -38,10 +38,12 @@ window.notepad.app = angular.module('notepad', [
 
   $urlRouterProvider.otherwise('/notes');
 })
-.run(function ($location) {
+.run(function ($location, $rootScope, theme) {
   if($location.path() === '/error') {
     $location
     .path('/')
     .replace();
   }
+
+  $rootScope.theme = theme;
 });
