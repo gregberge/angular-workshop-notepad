@@ -45,7 +45,7 @@ window.notepad.app = angular.module('notepad', [
   });
   $translateProvider.preferredLanguage('en');
 })
-.run(function ($location, $rootScope, theme) {
+.run(function ($location, $rootScope, $translate, theme) {
   if($location.path() === '/error') {
     $location
     .path('/')
@@ -53,4 +53,7 @@ window.notepad.app = angular.module('notepad', [
   }
 
   $rootScope.theme = theme;
+  $rootScope.changeLanguage = function (langKey) {
+    $translate.use(langKey);
+  };
 });
