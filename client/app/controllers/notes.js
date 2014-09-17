@@ -1,5 +1,6 @@
 window.notepad.controllers.controller('NotesCtrl', function ($scope, Note, $state, $translate) {
   $scope.createNote = function () {
+    if ($scope.noteForm.$invalid) return ;
     $scope.notes.push($scope.note);
     $scope.note.$save().then(function (note) {
       $state.go('notes.detail', {id: note.id});
