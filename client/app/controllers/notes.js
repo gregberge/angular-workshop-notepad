@@ -1,4 +1,4 @@
-window.notepad.controllers.controller('NotesCtrl', function ($scope, Note, $state) {
+window.notepad.controllers.controller('NotesCtrl', function ($scope, Note, $state, $translate) {
   $scope.createNote = function () {
     $scope.notes.push($scope.note);
     $scope.note.$save().then(function (note) {

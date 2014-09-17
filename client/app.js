@@ -11,13 +11,14 @@ window.notepad = {
 window.notepad.app = angular.module('notepad', [
   'ui.router',
   'ngResource',
+  'pascalprecht.translate',
   'notepad.constants',
   'notepad.services',
   'notepad.controllers',
   'notepad.filters',
   'notepad.directives'
 ])
-.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
@@ -37,6 +38,12 @@ window.notepad.app = angular.module('notepad', [
   });
 
   $urlRouterProvider.otherwise('/notes');
+
+  $translateProvider.useStaticFilesLoader({
+    prefix: '/translations/locale-',
+    suffix: '.json'
+  });
+  $translateProvider.preferredLanguage('en');
 })
 .run(function ($location, $rootScope, theme) {
   if($location.path() === '/error') {

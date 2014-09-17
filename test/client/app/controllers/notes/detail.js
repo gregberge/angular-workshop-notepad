@@ -3,7 +3,7 @@ var expect = chai.expect;
 describe('NotesDetailCtrl', function() {
   var $httpBackend, $state, $rootScope, scope, createController;
 
-  beforeEach(module('notepad', '/views/routes/notes.html'));
+  beforeEach(module('notepad', 'translations', '/views/routes/notes.html'));
 
   beforeEach(inject(function($injector) {
     $httpBackend = $injector.get('$httpBackend');

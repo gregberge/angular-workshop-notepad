@@ -16,6 +16,8 @@ module.exports = function (config) {
       {pattern: 'bower_components/angular/angular.js', watched: false},
       {pattern: 'bower_components/angular-ui-router/release/angular-ui-router.js', watched: false},
       {pattern: 'bower_components/angular-resource/angular-resource.js', watched: false},
+      {pattern: 'bower_components/angular-translate/angular-translate.js', watched: false},
+      {pattern: 'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js', watched: false},
 
       {pattern: 'bower_components/angular-mocks/angular-mocks.js', watched: false},
       {pattern: 'node_modules/chai/chai.js', watched: false},
@@ -25,7 +27,8 @@ module.exports = function (config) {
       'client/app.js',
       'client/app/**/*.js',
       'client/views/**/*.html',
-      'test/client/**/*.js'
+      'test/client/**/*.js',
+      'test/mocks/**/*.js'
     ],
     ngHtml2JsPreprocessor: {
       stripPrefix: 'client/',
