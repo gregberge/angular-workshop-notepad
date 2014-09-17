@@ -1,14 +1,15 @@
+var NotesPage = require('../pages/notes');
+
 describe('notes', function() {
   it('should add a note', function() {
-    browser.get('http://localhost:3000/notes');
+    var notesPage = new NotesPage();
+    notesPage.get();
 
-    element(by.css('toggle-btn button')).click();
-    element(by.model('note.title')).sendKeys('Good note');
-    element(by.model('note.content')).sendKeys('Hello');
-    element(by.css('[type=submit]')).click();
+    notesPage.toggleForm();
+    notesPage.setTitle('Good note');
+    notesPage.setContent('Hello');
+    notesPage.submit();
 
-    var noteList = element.all(by.repeater('note in notes'));
-    expect(noteList.count()).toEqual(3);
-    expect(noteList.get(2).getText()).toEqual('Good note');
+    expect(notesPage.getNotes().last().getText()).toEqual('Good note');
   });
 });
